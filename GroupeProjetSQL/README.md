@@ -5,9 +5,15 @@ Ce projet a été réalisé dans le cadre de notre formation en Data & IA (Nivea
 
 Notre mission consistait à interroger une base de données existante pour répondre à des besoins métier concrets, allant de la simple extraction de données à l'analyse de la performance de la flotte.
 
+A travers ce projet nous devions être capable de : -Comprendre la structure d'une BDD
+                                                   -Ecrire des requêtes SQL 
+                                                   -Utiliser PostrgreSQL
+Ce projet ne consistait pas seulement à écrire du code mais aussi à comprendre la logique des requêtes et à savoir les adapter.
+
+
 2. Membres du GROUPE
 
-Lydia: réalisation de la quête 1 et 2 et de la diapositive. 
+Lydia: réalisation de la quête 1 et 2 de la diapositive et d'une partie du READ ME. 
 
 Aurélie: réalisation de la quête 3 et du READ ME.
 
@@ -24,9 +30,9 @@ Versionning : Git & GitHub
 4. Structure du dépôt
 Le projet est organisé par "quêtes" correspondant aux différentes étapes de complexité :
 
-quete1 : Découverte et sélections simples.
+quete1 : Découverte et sélections simples(SELECT, FROM, WHERE).
 
-quete2 : Tris et filtres avancés.
+quete2 : Tris et filtres avancés(ORDER BY).
 
 quete3 : Utilisation des jointures (JOIN).
 
@@ -43,7 +49,7 @@ Rapport d'Analyse Technique
 A. Organisation du travail 
 
 Méthodologie :
-->Nous avons travaillé de manière hybride. Au début, nous avons réparti les premières quêtes pour avancer efficacement : Lydia s'est concentrée sur la découverte et les filtres (Quêtes 1 & 2) tandis que je préparais la structure des jointures (Quête 3). Les quêtes 4 et 5 ont été réalisées par Mathéo. 
+->Nous avons travaillé de manière hybride. Au début, nous avons réparti les premières quêtes pour avancer efficacement : Lydia s'est concentrée sur la découverte et les filtres (Quêtes 1 & 2) ainsi que de la diapositive tandis qu'Aurélie préparait la structure des jointures (Quête 3). Les quêtes 4 et 5 ont été réalisées par Mathéo. 
 
 Gestion de version (Git) :
 Nous avons utilisé un dépôt GitHub commun. Chaque membre a travaillé sur sa machine locale. Nous avons effectué des commits réguliers à la fin de chaque quête réussie pour assurer la sauvegarde du travail.
@@ -63,6 +69,8 @@ La base de données de cIAra Mobility est structurée autour de 4 tables princip
 -station : Répertorie les lieux de stationnement (id, nom, ville).
 
 -location : C'est la table centrale (table de faits). Elle relie les trois autres tables grâce à des clés étrangères (id_client, id_vehicule, id_station_depart, id_station_arrivee).
+
+
 
 Pertinence du modèle :
 Cette structure est pertinente car elle évite la redondance des données. Par exemple, si un véhicule change d'état, on le modifie une seule fois dans la table vehicule, et l'information est à jour pour toutes les futures locations. Elle permet de suivre précisément le trajet d'un véhicule (départ vs arrivée).
@@ -88,9 +96,7 @@ Exemple : FROM location INNER JOIN client ON location.id_client = client.id_clie
 Analyses statistiques (Quête 4 - Agrégations) :
 Pour obtenir des chiffres clés (KPIs), nous avons utilisé les fonctions d'agrégation couplées à GROUP BY.
 
-
 COUNT(*) : Pour compter le nombre total de locations par client.
-
 
 AVG(autonomie) : Pour calculer l'autonomie moyenne de la flotte.
 
